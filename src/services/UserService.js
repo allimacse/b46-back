@@ -1,7 +1,8 @@
 const { User } = require('../models/index.js');
 
 module.exports = {
-  create: (body) => new User(body).save(),
+  signup: (body) => new User(body).save(),
+  findOneByEmail: (email) => User.findOne({ email }),
   getAll: () => User.find(),
   get: (id) => User.findById(id),
   update: (user, body) => {
