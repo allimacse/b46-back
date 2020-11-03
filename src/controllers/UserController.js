@@ -48,8 +48,8 @@ module.exports = {
   // UPDATE
   update: async (req, res, next) => {
     try {
-      const { params, body } = req;
-      const user = await UserService.get(params.id);
+      const { body, decoded } = req;
+      const user = await UserService.get(decoded.id);
       const userUpdated = await UserService.update(user, body);
       res.json({ payload: userUpdated });
     } catch (error) {
