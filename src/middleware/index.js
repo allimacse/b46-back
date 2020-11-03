@@ -12,7 +12,6 @@ module.exports = {
       const token = authorization.split(' ')[1];
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       req.decoded = decoded;
-      console.log(decoded);
       next();
     } catch (error) {
       next(error.message);

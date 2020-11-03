@@ -20,4 +20,15 @@ module.exports = {
         password: Joi.string().required(),
       }),
   }),
+  update: celebrate({
+    [Segments.BODY]: Joi
+      .object()
+      .keys({
+        email: Joi.string().email(),
+        last_name: Joi.string(),
+        first_name: Joi.string(),
+        bith_date: Joi.date(),
+        password: Joi.string(),
+      }),
+  }),
 };
