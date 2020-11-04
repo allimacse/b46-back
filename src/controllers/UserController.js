@@ -1,5 +1,6 @@
 const { UserService } = require('../services/index.js');
 const auth = require('../utils/auth.js');
+const APIError = require('../utils/error.js');
 
 module.exports = {
   // CREATE
@@ -17,9 +18,9 @@ module.exports = {
     try {
       const { email, password } = req.body;
       const user = await UserService.findOneByEmail(email);
-      if (!user) throw new Error('Error on credentials.');
+      if (!user) throw new APIError('Error on credentials.', 400);
       const isValid = auth.comparePasswords(password, user.password);
-      if (!isValid) throw new Error('Error on credentials.');
+      if (!isValid) throw new APIError('Error on credentials.', 400);
       const token = auth.createToken(user);
       res.status(200).json({ message: 'Log in', payload: token });
     } catch (error) {
