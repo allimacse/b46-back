@@ -10,6 +10,7 @@ module.exports = {
         first_name: Joi.string().required(),
         bith_date: Joi.date(),
         password: Joi.string().required(),
+        profile_img: Joi.string().required(),
       }),
   }),
   login: celebrate({
