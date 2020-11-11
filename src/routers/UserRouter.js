@@ -10,7 +10,7 @@ const router = express.Router();
 // READ ALL
 router.get('/users', UserController.getAll);
 // READ
-router.get('/users/:id', UserController.get);
+router.get('/users/:id', verifyToken, UserController.get);
 // UPDATE
 router.patch('/users', verifyToken, UserValidator.update, UserController.update);
 // DELETE
